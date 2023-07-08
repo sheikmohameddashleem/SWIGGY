@@ -16,6 +16,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(NotAvailableException.class)
 	public ResponseEntity<MyErrorDetails> notAvail(NotAvailableException e, WebRequest we) {
 
+
 		return new ResponseEntity<MyErrorDetails>(
 				new MyErrorDetails(LocalDateTime.now(), e.getMessage(), we.getDescription(false)),
 				HttpStatus.BAD_REQUEST);
