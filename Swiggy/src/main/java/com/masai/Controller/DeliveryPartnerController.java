@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.masai.Model.Customer;
 import com.masai.Model.DeliveryPartner;
 import com.masai.Services.IDeliveryPartnerService;
 
 import jakarta.validation.Valid;
 
+@RestController
 public class DeliveryPartnerController {
 
 	@Autowired
