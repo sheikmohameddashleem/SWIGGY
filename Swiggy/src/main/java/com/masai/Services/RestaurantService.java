@@ -33,7 +33,7 @@ public class RestaurantService implements IRestaurantService {
 	}
 
 	@Override
-	public List<Restaurant> viewAll() {
+	public List<Restaurant> viewAll(String field,String direction) {
 		// TODO Auto-generated method stub
 		return restaurant.findAll();
 	}

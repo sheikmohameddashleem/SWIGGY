@@ -1,9 +1,13 @@
 package com.masai.Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
@@ -23,6 +27,9 @@ public class Customer {
 	
 	@NotNull
 	private String address;
+	
+	@OneToMany(mappedBy="customer")
+	private List<Orders> orders=new ArrayList<>();
 
 	public Customer() {
 		super();

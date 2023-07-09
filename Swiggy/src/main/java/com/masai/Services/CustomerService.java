@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.masai.Exceptions.NotFoundException;
@@ -24,6 +28,10 @@ public class CustomerService implements ICustomerSevice {
 
 	@Override
 	public Customer AddCustomer(Customer c) {
+		if(c==null)throw new NotFoundException("Value is Null");
+		Customer customer=custRepo.findById(c.getCustomerId()).get();
+		if(customer!=null)throw new NotFoundException("Already Exists");
+		
 		return custRepo.save(c);
 	}
 
@@ -38,9 +46,9 @@ public class CustomerService implements ICustomerSevice {
 	}
 
 	@Override
-	public List<Customer> viewAll() {
-		// TODO Auto-generated method stub
-		return custRepo.findAll();
+	public Page<Customer> viewAll() {
+		
+		return custRepo.findAll(PageRequest.of(0, 5));
 	}
 
 	@Override

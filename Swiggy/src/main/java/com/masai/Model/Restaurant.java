@@ -1,9 +1,12 @@
 package com.masai.Model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -19,6 +22,9 @@ public class Restaurant {
 	
 	@NotNull
 	private String address;
+	
+	@OneToMany(mappedBy="restaurant")
+	private List<Orders> orders;
 
 	public Restaurant(String restaurantName, String address) {
 		super();

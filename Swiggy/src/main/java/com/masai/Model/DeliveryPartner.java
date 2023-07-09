@@ -1,11 +1,14 @@
 package com.masai.Model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -25,6 +28,9 @@ public class DeliveryPartner {
 	@NotNull
 	@Pattern(regexp = "^[6-9][0-9]{9}")
 	private String phoneNumber;
+	
+	@OneToMany(mappedBy="deliveryPartner")
+	private List<Orders> orders;
 
 	@Enumerated(EnumType.STRING)
 	private Condition status;

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.masai.Model.Customer;
 import com.masai.Model.Restaurant;
 import com.masai.Services.IRestaurantService;
 
@@ -24,9 +23,9 @@ public class RestaurantController {
 
 	@Autowired
 	IRestaurantService restaurant;
-	@GetMapping("/Restaurants")
-	public ResponseEntity<List<Restaurant>> getAllCustomers(){
-		return new ResponseEntity<List<Restaurant>>(restaurant.viewAll(),HttpStatus.OK);
+	@GetMapping("/Restaurants/{field}/{direction}")
+	public ResponseEntity<List<Restaurant>> getAllCustomers(@PathVariable String field,@PathVariable String direction){
+		return new ResponseEntity<List<Restaurant>>(restaurant.viewAll(field,direction),HttpStatus.OK);
 	}
 	@GetMapping("/Restaurant/{id}")
 	public ResponseEntity<Restaurant> getCustomerById(@Valid@PathVariable Long id){

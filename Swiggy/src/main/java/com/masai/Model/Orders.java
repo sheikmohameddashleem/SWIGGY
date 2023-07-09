@@ -27,18 +27,18 @@ public class Orders {
 	
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="customer_id")
-	private Customer customerId;
+	@JoinColumn(name="customer")
+	private Customer customer;
 	
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="restaurant_id")
-	private Restaurant restaurantId;
+	@JoinColumn(name="restaurant")
+	private Restaurant restaurant;
 	
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="deliveryPartnerId")
-	private DeliveryPartner deliveryPartnerId;
+	@JoinColumn(name="deliveryPartner")
+	private DeliveryPartner deliveryPartner;
 	
 	private List<String> items=new ArrayList<>();
 	
@@ -54,9 +54,9 @@ public class Orders {
 	public Orders(Customer customerId, Restaurant restaurantId, DeliveryPartner deliveryPartnerId, List<String> items,
 			@NotNull Status orderStatus) {
 		super();
-		this.customerId = customerId;
-		this.restaurantId = restaurantId;
-		this.deliveryPartnerId = deliveryPartnerId;
+		this.customer = customerId;
+		this.restaurant = restaurantId;
+		this.deliveryPartner = deliveryPartnerId;
 		this.items = items;
 		this.orderStatus = orderStatus;
 	}
@@ -70,19 +70,19 @@ public class Orders {
 	}
 
 	public Restaurant getRestaurantId() {
-		return restaurantId;
+		return restaurant;
 	}
 
 	public void setRestaurantId(Restaurant restaurantId) {
-		this.restaurantId = restaurantId;
+		this.restaurant = restaurantId;
 	}
 
 	public DeliveryPartner getDeliveryPartnerId() {
-		return deliveryPartnerId;
+		return deliveryPartner;
 	}
 
 	public void setDeliveryPartnerId(DeliveryPartner deliveryPartnerId) {
-		this.deliveryPartnerId = deliveryPartnerId;
+		this.deliveryPartner = deliveryPartnerId;
 	}
 
 	public List<String> getItems() {
@@ -102,13 +102,13 @@ public class Orders {
 	}
 
 	public Customer getCustomerId() {
-		return customerId;
+		return customer;
 	}
 
 	@Override
 	public String toString() {
-		return "Orders [orderId=" + orderId + ", customerId=" + customerId + ", restaurantId=" + restaurantId
-				+ ", deliveryPartnerId=" + deliveryPartnerId + ", items=" + items + ", orderStatus=" + orderStatus
+		return "Orders [orderId=" + orderId + ", customerId=" + customer + ", restaurantId=" + restaurant
+				+ ", deliveryPartnerId=" + deliveryPartner + ", items=" + items + ", orderStatus=" + orderStatus
 				+ "]";
 	}
 

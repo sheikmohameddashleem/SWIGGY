@@ -1,8 +1,7 @@
 package com.masai.Controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,8 +24,8 @@ public class CustomerController {
 	ICustomerSevice customerService;
 	
 	@GetMapping("/Customers")
-	public ResponseEntity<List<Customer>> getAllCustomers(){
-		return new ResponseEntity<List<Customer>>(customerService.viewAll(),HttpStatus.OK);
+	public ResponseEntity<Page<Customer>> getAllCustomers(){
+		return new ResponseEntity<Page<Customer>>(customerService.viewAll(),HttpStatus.OK);
 	}
 	@GetMapping("/Customer/{id}")
 	public ResponseEntity<Customer> getCustomerById(@Valid@PathVariable Long id){
