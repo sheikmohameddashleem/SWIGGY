@@ -2,6 +2,8 @@ package com.masai.Model;
 
 import java.util.List;
 
+import org.springframework.validation.annotation.Validated;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -12,7 +14,15 @@ import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 public class DeliveryPartner {
 
@@ -35,10 +45,10 @@ public class DeliveryPartner {
 	@Enumerated(EnumType.STRING)
 	private Condition status;
 
-	public DeliveryPartner() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+//	public DeliveryPartner() {
+//		super();
+//		// TODO Auto-generated constructor stub
+//	}
 
 	public DeliveryPartner(
 			@NotNull(message = "Name is mandotory") @Size(min = 2, message = "name should be of greater than 2 letters") String name,
