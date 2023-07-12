@@ -49,6 +49,7 @@ public class CustomerService implements ICustomerSevice {
 	public Page<Customer> viewAll() {
 		
 		return custRepo.findAll(PageRequest.of(0, 5));
+//		return custRepo.findAll();
 	}
 
 	@Override
