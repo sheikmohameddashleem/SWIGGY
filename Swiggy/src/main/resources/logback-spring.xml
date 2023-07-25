@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-
-    <property name="LOG_FILE_INFO" value="info.log"/>
-    <property name="LOG_FILE_ERROR" value="error.log"/>
-
+    <property name="LOG_FILE_INFO" value="d:/new/info.log}"/>
+    <property name="LOG_FILE_ERROR" value="d:/new/error.log}"/>
     <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
-
     <appender name="LOG_INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_FILE_INFO}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -19,11 +15,10 @@
         <onMatch>ACCEPT</onMatch>
         <onMismatch>DENY</onMismatch>
     </filter>
-        <encoder>-
+        <encoder>
             <pattern>%d{dd-MM-yyyy HH:mm:ss.SSSS}|%-5level|%msg%n</pattern>
         </encoder>
     </appender>
-
     <appender name="LOG_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_FILE_ERROR}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -37,15 +32,12 @@
             <pattern>%d{dd-MM-yyyy HH:mm:ss.SSSS}|%-5level|%msg%n</pattern>
         </encoder>
     </appender>
-
     <root level="INFO">
        <appender-ref ref="CONSOLE"/>
     </root>
-
-    <logger name="com.masaischool" additivity="false" level="ALL">
+    <logger name="com.masai" additivity="false" level="ALL">
        <appender-ref ref="CONSOLE"/>
        <appender-ref ref="LOG_INFO"/>
        <appender-ref ref="LOG_ERROR"/>
     </logger>
-
 </configuration>

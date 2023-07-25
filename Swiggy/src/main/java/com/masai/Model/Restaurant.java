@@ -2,6 +2,9 @@ package com.masai.Model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,6 +28,9 @@ public class Restaurant {
 	
 	@OneToMany(mappedBy="restaurant")
 	private List<Orders> orders;
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private String password;
 
 	public Restaurant(String restaurantName, String address) {
 		super();

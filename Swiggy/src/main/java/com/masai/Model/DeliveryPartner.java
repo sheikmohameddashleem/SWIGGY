@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -30,6 +33,9 @@ public class DeliveryPartner {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
 	private Long deliveryPartnerId;
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private String password;
 
 	@NotNull(message = "Name is mandotory")
 	@Size(min = 2, message = "name should be of greater than 2 letters")
